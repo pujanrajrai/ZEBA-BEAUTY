@@ -7,12 +7,12 @@ DEBUG = False
 SECRET_KEY = 'ei9z54p3f+^d!w+al=6gq!3=8_%4y$%96$0rt4zkwz^_vn*&q_'
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(
-    BASE_DIR, "/home/pujanraj/zebabeauty.itnepalsolutions.com/media/")
+    BASE_DIR, "/home/pujanraj/pujanrajrai.com.np/media/")
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(
-    BASE_DIR, "/home/pujanraj/zebabeauty.itnepalsolutions.com/media/")
+    BASE_DIR, "/home/pujanraj/pujanrajrai.com.np/media/")
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
