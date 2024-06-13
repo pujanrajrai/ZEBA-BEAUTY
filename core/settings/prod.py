@@ -1,24 +1,35 @@
-from .base import BASE_DIR
+from .base import *
+from decouple import config
 import os
+from datetime import timedelta
+import pymysql
+pymysql.install_as_MySQLdb()
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'django-insecure-y(jg#8^pntjid441v#m1%pi(xy&qz7*62&9bgzew280*=gc@=y'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ei9z54p3f+^d!w+al=6gq!3=8_%4y$%96$0rt4zkwz^_vn*&q_'
-STATIC_URL = '/static/'
-MEDIA_ROOT = os.path.join(
-    BASE_DIR, "/home/pujanraj/pujanrajrai.com.np/media/")
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(
-    BASE_DIR, "/home/pujanraj/pujanrajrai.com.np/media/")
+    BASE_DIR, "/home/pujanraj/pujanrajrai.com.np/media")
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-ALLOWED_HOSTS = ["*"]
+STATIC_ROOT = os.path.join(BASE_DIR, "/home/pujanraj/pujanrajrai.com.np")
+
+
+ALLOWED_HOSTS = [
+    "*"
+]
+
+# Database
+# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+
 
 DATABASES = {
     "default": {
@@ -26,12 +37,3 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-
-
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
-SECURE_HSTS_SECONDS = 31536000
-SECURE_CONTENT_TYPE_NOSNIFF = True
-SECURE_SSL_REDIRECT = True
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
