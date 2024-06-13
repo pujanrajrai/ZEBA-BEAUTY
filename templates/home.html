@@ -1,0 +1,348 @@
+{%extends 'base.html' %}
+{% load static %}
+
+{%block slider%}
+<div class="absolute inset-0 bg-black opacity-75 shadow flex flex-col justify-around items-center ">
+    <div class=" hidden lg:flex flex-col justify-end items-start space-y-4 w-2/3 mt-48">
+      <h1 class=" text-9xl ">ZEBA BEAUTY</h1>
+      <div class="flex justify-between  items-center w-full">
+        <h1 class="text-9xl">SALON</h1>
+        <p class="w-full lg:w-1/2 lg:mt-4 ">
+          Step into our elegant space and be welcomed by our team of
+          highly skilled and passionate professionals, dedicated to
+          providing you with the finest in beauty care.
+        </p>
+      </div>
+    </div>
+    <div class="absolute bottom-0 flex justify-evenly items-center space-x-14 mb-14">
+      <div class="border hover:bg-white hover:text-black">
+        <a href="{% url 'booknow' %}"><button class="px-7 py-2 ">BOOK NOW</button></a>
+      </div>
+      <div class="border bg-white text-black hover:bg-transparent hover:text-white">
+        <a href="tel: 603 624 5144">
+          <button class="px-10 py-2">CALL US</button></a>
+      </div>
+
+    </div>
+  </div>
+
+  <video autoplay loop muted class="w-full object-cover h-auto">
+    <source src="{% static 'img/bg1.mp4'%}" type="video/mp4" />
+  </video>
+{%endblock%}
+
+{%block body%}
+<!-- prices starts  -->
+<div id="prices" class="h-50vh flex flex-col justify-center items-center mt-20 p-10">
+    <h1 class="text-3xl lg:text-5xl font-bold mb-8">PRICES</h1>
+    <div class="space-y-4 lg:space-y-0 lg:grid grid-cols-3 gap-8 w-30vh">
+      <div class="border border-black rounded-lg p-4 ">
+        <div class="border border-black rounded-2xl">
+          <h3 class="text-lg font-semibold text-center p-1">THREADING</h3>
+        </div>
+        <ul class="flex flex-col p-4 space-y-2">
+          <li>EYE BROWS ................................. $14</li>
+          <li>EYE BROWS & LIPS ................... $23</li>
+          <li>EYE BROWS & LIPS & CHIN ..... $33</li>
+          <li>UPPER LIPS .................................. $10</li>
+          <li>CHIN............................$12</li>
+          <li>CHEEKS..................... $12</li>
+          <li>FORHEAD.................. $10</li>
+          <li>FULL FACE................ $40</li>
+          <li>SIDE BURN................ $12</li>
+        </ul>
+        <div class="border border-black rounded-2xl mt-8">
+          <h3 class="text-lg font-semibold text-center p-1">
+            LASH EXTENSION
+          </h3>
+        </div>
+        <ul class="flex flex-col p-4 space-y-2">
+          <li>SYNTHETIC<br>( CLUSTER LASH ) .............. $45</li>
+        </ul>
+      </div>
+      <div class="border border-black rounded-lg p-4 ">
+        <div class="border border-black rounded-2xl">
+          <h3 class="text-lg font-semibold text-center p-1">WAXING</h3>
+        </div>
+        <ul class="flex flex-col p-4 space-y-2">
+          <li>EYE BROWS .......................... $15</li>
+          <li>FULL FACE ........................... $45</li>
+          <li>UNDERARMS ........................ $20</li>
+          <li>HALF ARM ....................... $25</li>
+          <li>FULL ARM ....................... $35</li>
+          <li>FULL LEG ..................... $55</li>
+          <li>HALF LEG ........... $30</li>
+          <li>FULL BACK ........... $50</li>
+          <li>BIKINI LINE ..........$25</li>
+          <li>BRAZILIAN .......... $60</li>
+          <li>FULL BODY ......... $170</li>
+          <li>NOSE WAX............$12</li>
+          <li>CHEST WAX........ $55</li>
+        </ul>
+      </div>
+      <div class="border border-black rounded-lg p-4">
+        <div class="border border-black rounded-2xl">
+          <h3 class="text-lg font-semibold text-center p-1">TINTING</h3>
+        </div>
+        <ul class="flex flex-col p-4 space-y-2">
+          <li>BROWS TINTING .................... $20</li>
+          <li>LASH TINT ............. $25</li>
+          <li>BROWS & LASH TINT .......... $40</li>
+          <li>EYE BROW THREADING <br />& BROWS TINT ......... $33</li>
+        </ul>
+        <div class="border border-black rounded-2xl mt-20">
+          <h3 class="text-lg font-semibold text-center p-1">FACIAL</h3>
+        </div>
+        <ul class="flex flex-col p-4 space-y-2">
+          <li>ANTI AGING FACIAL .................... $75</li>
+          <li>JANTA / MAN FACIAL............. $75</li>
+          <li>ACNE FACIAL .......... $70</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- prices ends  -->
+
+  <!-- our works starts  -->
+  <div id="ourWork">
+    <div class="h-60vh bg-[#232323] w-full text-white flex flex-col justify-center items-center mt-20 p-10">
+      <div class="border border rounded-2xl mt-10">
+          <h3 class="text-xs lg:text-sm text-center p-2">GALLERY</h3>
+      </div>
+      <h1 class="text-3xl lg:text-5xl font-bold m-5">OUR GALLERY</h1>
+      <p class="m-4 lg:text-lg">
+          Follow us on
+          <a href="https://www.instagram.com" class="underline hover:text-blue-300">
+              Instagram
+          </a>
+      </p>
+      <div class="grid grid-cols-2 gap-3 mt-10 lg:grid-cols-4 lg:gap-7 lg:m-8 lg:w-3/5">
+          {% for image in images %}
+          <img src="{{ image.image.url }}" alt="{{ image.caption }}" />
+          {% endfor %}
+      </div>
+      <div class="border my-20">
+          <a href="{% url 'booknow' %}">
+              <button class="px-20 py-4">BOOK NOW</button>
+          </a>
+      </div>
+  </div>
+    <hr class="w-full border-t-1 border-gray-600 mx-0" />
+    <div class="min-h-screen bg-white w-full text-[#232323] flex flex-col justify-center items-center p-10">
+      <div class="border border-[#232323] rounded-2xl mt-10 text-white bg-[#232323]">
+          <h3 class="text-xs lg:text-sm text-center p-2">SERVICES</h3>
+      </div>
+      <h1 class="text-3xl lg:text-5xl font-bold m-5">THE WORK WE DO</h1>
+      <p class="m-4 lg:text-lg">
+          Follow us on
+          <a href="https://www.instagram.com" class="underline hover:text-blue-300">
+              Instagram
+          </a>
+      </p>
+      <div class="grid grid-cols-2 gap-3 mt-10 lg:grid-cols-4 lg:gap-7 lg:m-8 lg:w-4/5">
+          {% for service in services %}
+          <div class="relative w-full h-64 perspective" onclick="this.classList.toggle('flip')">
+              <div class="absolute inset-0 transition-transform duration-500 transform-style-3d">
+                  <div class="absolute w-full h-full backface-hidden">
+                      <img src="{{ service.image.url }}" alt="{{ service.name }}" class="w-full h-full object-cover rounded-xl">
+                      {{ service.name }}
+                  </div>
+                  <div class="absolute w-full h-full bg-[#232323] text-white p-4 rounded-xl transform rotate-y-180 backface-hidden">
+                      <p>{{ service.description }}</p>
+                  </div>
+              </div>
+          </div>
+          {% endfor %}
+      </div>
+      <div class="border text-white bg-[#232323] my-20">
+          <a href="{% url 'booknow' %}"><button class="px-20 py-4">BOOK NOW</button></a>
+      </div>
+  </div>
+  
+  <style>
+      .perspective {
+          perspective: 1000px;
+      }
+      .transform-style-3d {
+          transform-style: preserve-3d;
+      }
+      .backface-hidden {
+          backface-visibility: hidden;
+      }
+      .rotate-y-180 {
+          transform: rotateY(180deg);
+      }
+      .flip .transform-style-3d {
+          transform: rotateY(180deg);
+      }
+  </style>
+    {% comment %} <div class="h-60vh bg-white w-full text-[#232323] flex flex-col justify-center items-center p-10">
+      <div class="border border rounded-2xl mt-10 text-white bg-[#232323]">
+        <h3 class="text-xs lg:text-sm text-center p-2 ">SERVICES</h3>
+      </div>
+      <h1 class="text-3xl  lg:text-5xl font-bold m-5">THE WORK WE DO</h1>
+      <p class="m-4 lg:text-lg">
+        Follow us on
+        <a href="https://www.instagram.com" class="underline hover:text-blue-300">
+          Instagram
+        </a>
+      </p>
+      <div class=" grid grid-cols-2 gap-3 mt-10 lg:grid-cols-4 lg:gap-7 lg:m-8 lg:w-3/5">
+        <img src="{% static 'img/work-1.jpg' %}" />
+        <img src="{% static 'img/work-6.jpg' %}" />
+        <img src="{% static 'img/work-3.jpg' %}" />
+        <img src="{% static 'img/work-5.jpg' %}" />
+        <img src="{% static 'img/work-3.jpg' %}" />
+        <img src="{% static 'img/work-5.jpg' %}" />
+        <img src="{% static 'img/work-1.jpg' %}" />
+        <img src="{% static 'img/work-6.jpg' %}" />
+      </div>
+
+      <div class="border text-white bg-[#232323]  my-20">
+        <a href="{% url 'booknow' %}"><button class="px-20 py-4">BOOK NOW</button></a>
+      </div>
+    </div> {% endcomment %}
+
+    <div class="bg-cover bg-top-100 text-white text-2xl lg:text-3xl lg:font-semibold p-3 mb-10"
+      style="background-image: url({% static 'img/makeup.jpg' %})">
+      <!-- can change this part  -->
+      <marquee scrolldelay="60">Your comfort and satisfaction are our top priorities, and we go
+        above and beyond to ensure that you leave our salon feeling
+        empowered, pampered, and confident. Thank you for choosing Ze Beauty
+        Salon, where beauty meets balance. We look forward to welcoming you
+        and making your time with us truly special.</marquee>
+    </div>
+  </div>
+  <!-- our work ends  -->
+
+  <!-- testimonials starts  -->
+  <!-- <div id="testimonials" class="h-60vh flex flex-col justify-center items-center mt-20 p-10">
+    <div class="border border-black rounded-2xl mt-10">
+      <h5 class="text-xs lg:text-sm text-center p-2">TESTIMONIALS</h5>
+    </div>
+    <h1 class="text-3xl lg:text-5xl font-bold m-5">WHAT OUR CUSTOMERS SAY</h1>
+    <div class="flex mt-14 space-x-5">
+      <div id="reviewCard" class="border border-gray-300 p-4 w-80 bg-white rounded shadow">
+        <div class="flex items-start space-x-6">
+          <i class="fa fa-user text-4xl mt-1"></i>
+          <div>
+            <h5 class="font-semibold">Pujan Raj Rai</h5>
+            <text class="text-xs text-gray-500 block"> 6-5-2024</text>
+          </div>
+        </div>
+        <div class="flex items-center space-x-1 mt-2">
+          <i class="fas fa-star text-yellow-500"></i>
+          <i class="fas fa-star text-yellow-500"></i>
+          <i class="fas fa-star text-yellow-500"></i>
+          <i class="fas fa-star text-yellow-500"></i>
+          <i class="fas fa-star text-yellow-500"></i>
+        </div>
+        <p class="mt-2 text-sm">
+          Each service is tailored to meet your specific needs, ensuring a
+          personalized experience that caters to your unique preferences and
+          enhances your individual beauty.
+        </p>
+      </div>
+      <div id="reviewCard" class="border border-gray-300 p-4 w-80 bg-white rounded shadow">
+        <div class="flex items-start space-x-6">
+          <i class="fa fa-user text-4xl mt-1"></i>
+          <div>
+            <h5 class="font-semibold">Pujan Raj Rai</h5>
+            <text class="text-xs text-gray-500 block"> 6-5-2024</text>
+          </div>
+        </div>
+        <div class="flex items-center space-x-1 mt-2">
+          <i class="fas fa-star text-yellow-500"></i>
+          <i class="fas fa-star text-yellow-500"></i>
+          <i class="fas fa-star text-yellow-500"></i>
+          <i class="fas fa-star text-yellow-500"></i>
+          <i class="fas fa-star text-yellow-500"></i>
+        </div>
+        <p class="mt-2 text-sm">
+          Each service is tailored to meet your specific needs, ensuring a
+          personalized experience that caters to your unique preferences and
+          enhances your individual beauty.
+        </p>
+      </div>
+      <div id="reviewCard" class="border border-gray-300 p-4 w-80 bg-white rounded shadow">
+        <div class="flex items-start space-x-6">
+          <i class="fa fa-user text-4xl mt-1"></i>
+          <div>
+            <h5 class="font-semibold">Pujan Raj Rai</h5>
+            <text class="text-xs text-gray-500 block"> 6-5-2024</text>
+          </div>
+        </div>
+        <div class="flex items-center space-x-1 mt-2">
+          <i class="fas fa-star text-yellow-500"></i>
+          <i class="fas fa-star text-yellow-500"></i>
+          <i class="fas fa-star text-yellow-500"></i>
+          <i class="fas fa-star text-yellow-500"></i>
+          <i class="fas fa-star text-yellow-500"></i>
+        </div>
+        <p class="mt-2 text-sm">
+          Each service is tailored to meet your specific needs, ensuring a
+          personalized experience that caters to your unique preferences and
+          enhances your individual beauty.
+        </p>
+      </div>
+    </div>
+    <div class="border border-black my-16">
+      <a href="{% url 'booknow' %}"><button class="p-5 py-2 font-semibold">BOOK NOW</button></a>
+    </div>
+  </div> -->
+  <!-- testimonials ends  -->
+
+  <!-- newsletter start  -->
+  <div id="newsletter" class="mt-20 text-white">
+    <div class="relative bg-cover bg-center h-80 flex justify-center items-center"
+      style="background-image: url('{% static 'img/hair4.jpg' %}')">
+      <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col lg:flex-row justify-evenly items-center">
+        <h1 class="text-3xl lg:text-6xl font-bold lg:mx-44">
+          KEEP ME UPDATED
+        </h1>
+        <form method="POST" class="flex space-x-4 lg:mr-36">
+          {% csrf_token %}
+          {{ form.email.errors }}
+          {{ form.email }}
+          <button type="submit" class="bg-white hover:bg-gray-300 text-black py-2 px-6 rounded-full">
+            SEND
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="bg-[#232323] lg:h-96 flex justify-center lg:justify-end items-center">
+      <p class="p-12 text-lg lg:text-3xl lg:w-1/2 lg:mr-36 lg:leading-relaxed">
+        Our commitment to excellence extends beyond our services. We take
+        pride in treating every client as a special guest, ensuring that you
+        leave our salon feeling empowered, pampered, and confident.
+      </p>
+    </div>
+  </div>
+  <!-- newsletter ends  -->
+  <!-- about us start  -->
+  <div id="aboutus" class="h-60vh flex flex-col justify-center items-center mt-20 p-10">
+    <div class="border border-black rounded-2xl lg:mt-10">
+      <h5 class="text-xs lg:text-sm text-center p-2">ABOUT US</h5>
+    </div>
+    <h1 class="text-4xl lg:text-5xl font-bold m-5">WHO WE ARE</h1>
+    <div class="w-auto lg:w-4/5 grid grid-cols-3 gap-3 lg:gap-7 lg:m-8">
+      <img src="{% static 'img/2.png' %}" />
+      <img src="{% static 'img/1.png' %}" />
+      <img src="{% static 'img/3.png' %}" />
+    </div>
+    <div class="mt-6 lg:flex items-center justify-center">
+      <p class="text-sm lg:text-xl lg:w-1/2 leading-normal lg:mx-24">
+        Welcome to Zeba Beauty Salon, your ultimate destination for a
+        transformative beauty experience nestled in the heart of Manchester,
+        NH. At Ze Beauty Salon, we're dedicated to helping you look and feel
+        your best. Our luxurious salon offers a serene escape from the
+        hustle and bustle of daily life. Step into our elegant space and be
+        welcomed by our team of highly skilled and passionate professionals,
+        dedicated to providing you with the finest in beauty care.
+      </p>
+      <div class="flex justify-center items-center h-full">
+        <img src="{% static 'img/logo.png' %}" class="h-2/3" />
+      </div>
+    </div>
+  </div>
+{%endblock%}

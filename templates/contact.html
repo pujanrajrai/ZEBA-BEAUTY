@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<div
+    class="relative bg-cover bg-center h-80 flex justify-center items-center"
+    style="background-image: url({% static 'img/contact.jpg' %})"
+>
+    <div
+        class="absolute inset-0 bg-black bg-opacity-75 flex justify-center items-end"
+    >
+        <h1 class="text-5xl text-white lg:text-7xl font-bold mb-14">CONTACT US</h1>
+    </div>
+</div>
+<div class="flex flex-col lg:flex-row justify-evenly items-center my-20">
+    <div
+        class="flex flex-col justify-stretch w-full p-4 lg:p-0 lg:w-2/5 space-y-4"
+    >
+        <div
+            class="border border-gray-300 h-30 p-4 text-center bg-white rounded shadow"
+        >
+            <a
+                href="https://www.google.com/maps?ll=42.966304,-71.451938&z=16&t=m&hl=en&gl=US&mapclient=embed&q=379+S+Willow+St+Manchester,+NH+03103"
+            >
+                <i class="fas fa-map-marker-alt text-3xl p-2"></i>
+                <h3 class="font-semibold p-1">Our Address</h3>
+                <text>379 S. Willow Street, Manchester, NH, 03103</text></a
+            >
+        </div>
+        <div class="flex space-x-4">
+            <div
+                class="border border-gray-300 h-30 p-4 w-full text-center bg-white rounded shadow"
+            >
+                <a href="tel: 603 624 5144">
+                    <i class="fas fa-phone text-3xl mt-1"></i>
+                    <h3 class="font-semibold p-1">Call Us</h3>
+                    <text>603 624 5144</text></a
+                >
+            </div>
+            <div
+                class="border border-gray-300 h-30 p-4 w-full text-center bg-white rounded shadow"
+            >
+                <a href="mailto:www.zebabeautysalon.com">
+                    <i class="fas fa-envelope text-3xl mt-1"></i>
+                    <h3 class="font-semibold p-1">Email Us</h3>
+                    <text>www.zebabeautysalon.com</text></a
+                >
+            </div>
+        </div>
+    </div>
+    <div
+        class="border mt-10 lg:mt-auto border-gray-300 h-30 p-4 lg:w-2/5 bg-white rounded shadow"
+    >
+        <form method="POST">
+            {% csrf_token %}
+            <div class="flex flex-col justify-stretch space-y-4">
+                {{ form.non_field_errors }}
+                <div class="flex flex-row justify-evenly space-x-3">
+                    {{ form.name.errors }}
+                    {{ form.name }}
+                    {{ form.email.errors }}
+                    {{ form.email }}
+                </div>
+                {{ form.subject.errors }}
+                {{ form.subject }}
+                {{ form.message.errors }}
+                {{ form.message }}
+                <button
+                    class="bg-black hover:bg-gray-300 hover:text-black text-white font-semibold py-2 px-6 rounded"
+                >
+                    SEND
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
