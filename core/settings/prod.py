@@ -13,13 +13,13 @@ DEBUG = False
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(
-    BASE_DIR, "/home/pujanraj/zeba.helping-hand.xyz/media")
+    BASE_DIR, "/home/pujanraj/zebabeautysalon.com/media")
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-STATIC_ROOT = os.path.join(BASE_DIR, "/home/pujanraj/zeba.helping-hand.xyz")
+STATIC_ROOT = os.path.join(BASE_DIR, "/home/pujanraj/zebabeautysalon.com")
 
 
 ALLOWED_HOSTS = [
