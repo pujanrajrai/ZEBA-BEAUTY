@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   {% comment %} <script src="https://cdn.tailwindcss.com"></script> {% endcomment %}
-  {% comment %} <link href="{% static 'css/index.css'%}" rel="stylesheet"> {% endcomment %}
+  <link href="{% static 'css/index.css'%}" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
 
 
@@ -38,10 +38,10 @@
     <div class="relative text-white   lg:h-30 ">
       <!-- need to adjust height  -->
       <nav
-        class="absolute{% if bg %} bg-black{%endif%} w-full lg:w-auto lg:inset-x-20  top-0 flex flex-row justify-between items-center p-6 lg:px-8 z-20">
+        class="absolute{% if bg %} bg-black{%endif%} w-full lg:w-auto lg:inset-x-10  top-0 flex flex-row justify-between items-center p-6 lg:px-8 z-20">
         <div class="">
-            <a href="/"><h1 class="text-2xl  lg:text-3xl italic ">Zeba Beauty </h1>
-          <h5 class="text-sm lg:text-md">Manchester, NH</h5></a>
+            <a href="/"><h1 class="text-2xl md:text-5xl lg:text-3xl italic ">Zeba Beauty </h1>
+          <h5 class="text-sm md:text-xl lg:text-md">Manchester, NH</h5></a>
         </div>
         <!-- Menu icon for smaller screens -->
         <div class="lg:hidden">
@@ -49,7 +49,7 @@
             <i class="fas fa-bars text-2xl"></i>
           </button>
         </div>
-        <div id="nav-links" class="hidden lg:flex flex-row lg:flex-row space-x-2 md:space-x-4">
+        <div id="nav-links" class="hidden lg:flex flex-row lg:flex-row space-x-2 md:space-x-4 text-sm">
           <a href="/" class="py-2 px-3 block">HOME</a>
           <a href="/#aboutus" class="py-2 px-3 block">ABOUT US</a>
           <a href="/#ourWork" class="py-2 px-3 block">OUR WORK</a>
@@ -63,15 +63,18 @@
             <a href="#about" class="block py-4 text-white hover:border-secondary ">ABOUT US</a>
             <a href="#ourWork" class="block py-4 text-white hover:border-secondary ">OUR SERVICES</a>
             <a href="{% url 'contactus' %}" class="block py-4 text-white hover:border-secondary">CONTACT US</a>
-            <div class="grid grid-cols-3">
-                <a href="https://maps.app.goo.gl/d2cgvbdkqntDiN878" target="_blank" class="p-2 hover:bg-white hover:rounded hover:text-pink-900">
+            <div class="grid grid-cols-4">
+                <a href="https://maps.app.goo.gl/d2cgvbdkqntDiN878" target="_blank" class="p-2 hover:bg-white hover:rounded hover:text-green-700">
                     <i class="fa-solid fa-location-dot"></i>              </a>
                 </a>
-              <a href="#" class="p-2 hover:bg-white hover:rounded hover:text-pink-900">
+              <a href="https://www.tiktok.com/zebabeauty/" class="p-2 hover:bg-white hover:rounded hover:text-black">
+                <i class="fab fa-tiktok"></i>
+              </a>
+              <a href="https://www.instagram.com/zebabeauty1/" class="p-2 hover:bg-white hover:rounded hover:text-pink-900">
                 <i class="fab fa-instagram"></i>
               </a>
               
-              <a href="#" class="p-2 hover:bg-white hover:rounded hover:text-blue-900">
+              <a href="https://www.facebook.com/zebabeauty1/" class="p-2 hover:bg-white hover:rounded hover:text-blue-900">
                 <i class="fab fa-facebook"></i>
               </a>
             </div>
@@ -82,9 +85,12 @@
             </div>
           </div>
         </div>
-        <div class=" hidden lg:flex items-center space-x-5">
-            <a href="https://maps.app.goo.gl/d2cgvbdkqntDiN878" target="_blank" class="p-2 hover:bg-white hover:rounded hover:text-pink-900">
+        <div class=" hidden lg:flex items-center space-x-3">
+            <a href="https://maps.app.goo.gl/d2cgvbdkqntDiN878" target="_blank" class="p-2 hover:bg-white hover:rounded hover:text-green-800">
                 <i class="fa-solid fa-location-dot"></i>              </a>
+                <a href="https://www.tiktok.com/zebabeauty/" class="p-2 hover:bg-white hover:rounded hover:text-black">
+                  <i class="fab fa-tiktok"></i>
+                </a>
           <a href="#" class="p-2 hover:bg-white hover:rounded hover:text-pink-900">
             <i class="fab fa-instagram"></i>
           </a>
@@ -125,6 +131,11 @@
 
       <div class="flex flex-col justify-evenly items-center space-y-8 ">
         <div class="space-x-4 ">
+          <a href="https://maps.app.goo.gl/d2cgvbdkqntDiN878" target="_blank" class="p-2 hover:bg-white hover:rounded hover:text-green-800">
+            <i class="fa-solid fa-location-dot"></i>              </a>
+            <a href="https://www.tiktok.com/zebabeauty/" class="p-2 hover:bg-white hover:rounded hover:text-black">
+              <i class="fab fa-tiktok"></i>
+            </a>
           <a href="#" class="p-2 hover:bg-white hover:rounded hover:text-pink-900">
             <i class="fab fa-instagram"></i>
           </a>
