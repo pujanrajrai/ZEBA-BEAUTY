@@ -1,40 +1,40 @@
 {%extends 'base.html' %} {% load static %} {%block slider%}
-<div
-  class="absolute inset-0 bg-black opacity-75 shadow flex flex-col justify-around items-center"
->
-  <div
-    class="hidden  lg:flex flex-col justify-end items-start space-y-4 w-2/3 mt-44"
-  >
-    <h1 class=" text-8xl">ZEBA BEAUTY</h1>
+<style>
+  .video-background {
+    z-index: -1; /* Make sure the video is behind the content */
+  }
+  .content {
+    z-index: 10; /* Ensure the content is in front */
+  }
+</style>
+<div class="absolute inset-0 bg-black opacity-75 shadow flex flex-col justify-around items-center content">
+  <div class="hidden lg:flex flex-col justify-end items-start space-y-4 w-2/3 mt-44">
+    <h1 class="text-8xl">ZEBA BEAUTY</h1>
     <div class="flex justify-between items-center w-full">
-      <h1 class=" text-8xl">SALON</h1>
-      <p class="w-full  lg:w-1/2 lg:mt-4">
+      <h1 class="text-8xl">SALON</h1>
+      <p class="w-full lg:w-1/2 lg:mt-4">
         Step into our elegant space and be welcomed by our team of highly
         skilled and passionate professionals, dedicated to providing you with
         the finest in beauty care.
       </p>
     </div>
   </div>
-  <div
-    class="absolute bottom-0 flex justify-evenly items-center space-x-14 mb-12 "
-  >
+  <div class="absolute bottom-0 flex justify-evenly items-center space-x-14 mb-12">
     <div class="border hover:bg-white hover:text-black">
-      <a href="{% url 'booknow' %}"
-        ><button class="px-20 py-2">BOOK NOW</button></a
-      >
+      <a href="{% url 'booknow' %}">
+        <button class="px-8 py-2">BOOK NOW</button>
+      </a>
     </div>
-    <div
-      class="border bg-white text-black hover:bg-transparent hover:text-white"
-    >
-      <a href="tel: 603 624 5144">
-        <button class="px-24 py-2">CALL US</button></a
-      >
+    <div class="border bg-white text-black hover:bg-transparent hover:text-white">
+      <a href="tel:6036245144">
+        <button class="px-10 py-2">CALL US</button>
+      </a>
     </div>
   </div>
 </div>
 
-<video autoplay loop muted class="w-full object-cover h-auto">
-  <source src="{% static 'img/bg1.mp4'%}" type="video/mp4" />
+<video autoplay loop muted playsinline class="w-full object-cover h-auto video-background">
+  <source src="{% static 'img/bg1.mp4' %}" type="video/mp4" />
 </video>
 {%endblock%} {%block body%}
 
