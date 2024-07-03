@@ -19,12 +19,14 @@ class BookingForm(forms.ModelForm):
 class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
-        fields = ['name', 'email', 'subject', 'message']
+        fields = ['name', 'email', 'phone_number', 'subject', 'message']
         widgets = {
             'name': forms.TextInput(attrs={'class': 'w-full border border-gray-300 bg-transparent p-2 rounded', 'placeholder': 'Your Name'}),
             'email': forms.EmailInput(attrs={'class': 'w-full border border-gray-300 bg-transparent p-2 rounded', 'placeholder': 'Your email'}),
             'subject': forms.TextInput(attrs={'class': 'border border-gray-300 bg-transparent p-2 rounded', 'placeholder': 'Subject'}),
             'message': forms.Textarea(attrs={'class': 'border border-gray-300 bg-transparent p-2 rounded', 'placeholder': 'Your Message', 'rows': 3}),
+            'phone_number': forms.TextInput(attrs={'class': 'border border-gray-300 bg-transparent p-2 rounded', 'placeholder': 'Your Phone Number'}),
+
         }
 
 

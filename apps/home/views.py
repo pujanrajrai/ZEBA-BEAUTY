@@ -1,3 +1,4 @@
+from home.sendemail import SendEmail
 from .forms import BookingForm, ContactForm, NewsletterSubscriptionForm
 from .models import GalleryImage, Service
 from django.shortcuts import render, redirect
@@ -26,17 +27,32 @@ def home(request):
 
 def contactus(request):
     if request.method == 'POST':
-        form = ContactForm(request.POST)
+        data = request.POST
+        form = ContactForm(data)
         if form.is_valid():
             contact = form.save()
-            # Send an email
-            # send_mail(
-            #     contact.subject,
-            #     contact.message,
-            #     contact.email,
-            #     ['your-email@example.com'],  # Replace with your email address
-            #     fail_silently=False,
-            # )
+            sendemail = SendEmail()
+            sendemail.send_email_to_client(
+                email=[data.get('email')],
+                subject="Thank you for contacting us!",
+                body_var={
+                    "message": "Thank you for reaching out to us. We have received your message and will get back to you as soon as possible.",
+                    "full_name": data.get('name')
+                },
+            )
+
+            sendemail.send_email_to_admin(
+                subject="Contact Us Form Received",
+                body_var={
+                    "message": f"We have received a contact us form from {data.get('name')}.",
+                    "name": data.get("name"),
+                    "email": data.get("email"),
+                    "subject": data.get("subject"),
+                    "contact_message": data.get("message"),
+                    "phone_number": data.get('phone_number'),
+                    "contact": "contact",
+                },
+            )
             return redirect('success')  # Redirect to a success page
     else:
         form = ContactForm()
