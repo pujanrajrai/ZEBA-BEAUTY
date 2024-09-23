@@ -63,11 +63,38 @@ def booknow(request):
     if request.method == 'POST':
         form = BookingForm(request.POST)
         if form.is_valid():
-            form.save()
+            booking = form.save()
+            import pdb
+            pdb.set_trace()
+            # Send email to the client
+            sendemail = SendEmail()
+            sendemail.send_email_to_client(
+                email=[booking.email],
+                subject="Thank you for booking with us!",
+                body_var={
+                    "message": "Thank you for booking with us. We have received your request and will confirm the details soon.",
+                    "full_name": booking.name,
+                },
+            )
+            # Send email to the admin
+            sendemail.send_email_to_admin(
+                subject="New Booking Received",
+                body_var={
+                    "message": f"A new booking request has been received from {booking.name}.",
+                    "name": booking.name,
+                    "email": booking.email,
+                    "phone": booking.phone,
+                    "date": booking.date,
+                    "time": booking.time,
+                    "reason": booking.reason,
+                },
+            )
+
             # Redirect to a success page or wherever you want
             return redirect('success')
     else:
         form = BookingForm()
+
     context = {
         "form": form
     }

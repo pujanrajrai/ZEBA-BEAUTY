@@ -8,6 +8,7 @@ class Booking(models.Model):
     date = models.DateField()
     time = models.TimeField()
     reason = models.TextField()
+    is_read = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.name} - {self.date} at {self.time}"
@@ -20,6 +21,7 @@ class Contact(models.Model):
     message = models.TextField()
     phone_number = models.CharField(max_length=20)
     created_at = models.DateTimeField(auto_now_add=True)
+    is_read = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
