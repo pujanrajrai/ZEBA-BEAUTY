@@ -40,7 +40,6 @@ def contactus(request):
                     "full_name": data.get('name')
                 },
             )
-
             sendemail.send_email_to_admin(
                 subject="Contact Us Form Received",
                 body_var={
@@ -61,11 +60,11 @@ def contactus(request):
 
 def booknow(request):
     if request.method == 'POST':
+        import pdb
+        pdb.set_trace()
         form = BookingForm(request.POST)
         if form.is_valid():
             booking = form.save()
-            import pdb
-            pdb.set_trace()
             # Send email to the client
             sendemail = SendEmail()
             sendemail.send_email_to_client(
@@ -76,7 +75,7 @@ def booknow(request):
                     "full_name": booking.name,
                 },
             )
-            # Send email to the admin
+            # # Send email to the admin
             sendemail.send_email_to_admin(
                 subject="New Booking Received",
                 body_var={

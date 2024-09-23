@@ -283,7 +283,12 @@
                                               <p>Message: {{ contact_message }}</p>
                                           {% endif %}
                                       {% endif %}
-                              
+                                      {% if email %}
+                                      <p>Email: {{ email }}</p>
+                                  {% endif %}
+                                  {% if phone %}
+                                      <p>Phonenumber: {{ phone }}</p>
+                                  {% endif %}
                                       {% if date %}
                                           <p>Date: {{ date }}</p>
                                       {% endif %}
@@ -293,6 +298,7 @@
                                       {% if reason %}
                                           <p>Reason: {{ reason }}</p>
                                       {% endif %}
+                                      
                                   </strong>
                               </p>
                                 <p style="line-height: 140%;"> </p><br>
