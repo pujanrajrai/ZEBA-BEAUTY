@@ -8,7 +8,7 @@ from datetime import timedelta
 SECRET_KEY = 'django-insecure-y(jg#8^pntjid441v#m1%pi(xy&qz7*62&9bgzew280*=gc@=y'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
