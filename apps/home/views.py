@@ -60,8 +60,6 @@ def contactus(request):
 
 def booknow(request):
     if request.method == 'POST':
-        import pdb
-        pdb.set_trace()
         form = BookingForm(request.POST)
         if form.is_valid():
             booking = form.save()
