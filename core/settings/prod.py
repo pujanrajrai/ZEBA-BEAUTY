@@ -5,10 +5,10 @@ from datetime import timedelta
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-y(jg#8^pntjid441v#m1%pi(xy&qz7*62&9bgzew280*=gc@=y'
+SECRET_KEY = '2k#89%%zdm$+j_7u(yr8sp4%e&tm0+1rufyrnbs*s6964jyap*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
