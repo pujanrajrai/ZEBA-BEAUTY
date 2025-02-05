@@ -1,5 +1,10 @@
 from django import forms
 from .models import Booking, NewsletterSubscriber, Contact
+from captcha.fields import CaptchaField
+
+
+class CaptchaFieldForm(forms.Form):
+    captcha = CaptchaField()
 
 
 class BookingForm(forms.ModelForm):

@@ -34,6 +34,7 @@ DJANGO_APP = [
 # third party app here
 THIRD_PARTY_APP = [
     'django_ckeditor_5',
+    'captcha',
 ]
 
 # all installed apps
@@ -114,3 +115,11 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'zebabeauty1@gmail.com'
 EMAIL_HOST_PASSWORD = 'vydt aclh esou mzjr'
+
+
+# captcha settings
+CAPTCHA_FONT_SIZE = 55
+CAPTCHA_FOREGROUND_COLOR = '#000'
+CAPTCHA_BACKGROUND_COLOR = '#FFF'
+CAPTCHA_IMAGE_SIZE = [200, 90]
+CAPTCHA_DICTIONARY_MIN_LENGTH = CAPTCHA_DICTIONARY_MAX_LENGTH = 4

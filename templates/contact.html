@@ -2,6 +2,21 @@
 {% load static %}
 
 {% block body %}
+<style>
+    /* Your regular styles here */
+
+    @media print {
+    #header {
+            visibility: hidden;
+        }
+    #hide {
+          visibility: hidden;
+          } 
+    }
+    #id_captcha_1{
+        visibility: hidden;    
+    }
+</style>
 <div class="relative bg-cover bg-center h-80 flex justify-center items-center"
     style="background-image: url({% static 'img/contact.jpg' %})">
     <div class="absolute inset-0 bg-black bg-opacity-75 flex justify-center items-end">
@@ -40,20 +55,35 @@
             {% csrf_token %}
             <div class="flex flex-col justify-stretch space-y-4">
                 {{ form.non_field_errors }}
+                
                 <div class="flex flex-row justify-evenly space-x-3">
                     {{ form.name.errors }}
                     {{ form.name }}
                     {{ form.email.errors }}
                     {{ form.email }}
-
                 </div>
-
-                {{ form.email.phone_number }}
+        
+                {{ form.phone_number.errors }}
                 {{ form.phone_number }}
                 {{ form.subject.errors }}
                 {{ form.subject }}
                 {{ form.message.errors }}
                 {{ form.message }}
+        
+                <!-- Captcha Section -->
+                <div class="flex flex-col space-y-2">
+                    {{ captcha_form.captcha.errors }}
+        
+                    <!-- Captcha Image -->
+                    <div>
+                        {{ captcha_form.captcha }}  <!-- This should include the image -->
+                    </div>
+        
+                    <!-- Explicit Captcha Input Field -->
+                    <input type="text" name="captcha_1"  required placeholder="Enter Captcha"
+                           class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+        
                 <button class="bg-black hover:bg-gray-300 hover:text-black text-white font-semibold py-2 px-6 rounded">
                     SEND
                 </button>
@@ -61,4 +91,11 @@
         </form>
     </div>
 </div>
+
+<script>
+    const input = document.getElementById('id_captcha_1');
+    // ✅ Remove required attribute
+    input.removeAttribute('required');
+
+</script>
 {% endblock %}

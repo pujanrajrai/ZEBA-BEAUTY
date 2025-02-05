@@ -1,5 +1,5 @@
 from home.sendemail import SendEmail
-from .forms import BookingForm, ContactForm, NewsletterSubscriptionForm
+from .forms import BookingForm, ContactForm, NewsletterSubscriptionForm, CaptchaFieldForm
 from .models import GalleryImage, Service
 from django.shortcuts import render, redirect
 
@@ -29,7 +29,9 @@ def contactus(request):
     if request.method == 'POST':
         data = request.POST
         form = ContactForm(data)
-        if form.is_valid():
+        captcha_form = CaptchaFieldForm(data)  # Validate captcha
+
+        if form.is_valid() and captcha_form.is_valid():  # Ensure both forms are valid
             contact = form.save()
             sendemail = SendEmail()
             sendemail.send_email_to_client(
@@ -55,14 +57,19 @@ def contactus(request):
             return redirect('success')  # Redirect to a success page
     else:
         form = ContactForm()
-    return render(request, 'contact.html', {'form': form})
+        captcha_form = CaptchaFieldForm()
+
+    return render(request, 'contact.html', {'form': form, 'captcha_form': captcha_form})
 
 
 def booknow(request):
     if request.method == 'POST':
         form = BookingForm(request.POST)
-        if form.is_valid():
+        captcha_form = CaptchaFieldForm(request.POST)  # Captcha validation
+
+        if form.is_valid() and captcha_form.is_valid():  # Ensure both forms are valid
             booking = form.save()
+
             # Send email to the client
             sendemail = SendEmail()
             sendemail.send_email_to_client(
@@ -73,7 +80,8 @@ def booknow(request):
                     "full_name": booking.name,
                 },
             )
-            # # Send email to the admin
+
+            # Send email to the admin
             sendemail.send_email_to_admin(
                 subject="New Booking Received",
                 body_var={
@@ -87,13 +95,14 @@ def booknow(request):
                 },
             )
 
-            # Redirect to a success page or wherever you want
-            return redirect('success')
+            return redirect('success')  # Redirect to success page
     else:
         form = BookingForm()
+        captcha_form = CaptchaFieldForm()
 
     context = {
-        "form": form
+        "form": form,
+        "captcha_form": captcha_form  # Pass captcha form to template
     }
     return render(request, 'booknow.html', context)
 
